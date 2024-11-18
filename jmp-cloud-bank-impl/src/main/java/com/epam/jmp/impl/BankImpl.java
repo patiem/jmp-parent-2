@@ -19,8 +19,10 @@ public class BankImpl implements Bank {
 
     @Override
     public BankCard createBankCard(User user, BankCardType cardType) {
+        Optional.ofNullable(user).orElseThrow(() -> new IllegalArgumentException("User cannot be null"));
+
         var biFunction = Optional.ofNullable(cardCreators.get(cardType))
                 .orElseThrow(() -> new IllegalArgumentException("Invalid car type"));
-        return biFunction.apply(Bank.generateCardNumber(user), user);
+        return biFunction.apply(Bank.generateCardNumber(), user);
     }
 }

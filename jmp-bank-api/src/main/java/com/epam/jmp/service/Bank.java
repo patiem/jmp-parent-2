@@ -4,12 +4,12 @@ import com.epam.jmp.dto.BankCard;
 import com.epam.jmp.dto.BankCardType;
 import com.epam.jmp.dto.User;
 
-import java.util.Random;
+import java.util.UUID;
 
 public interface Bank {
     BankCard createBankCard(User user, BankCardType cardType);
 
-    static String generateCardNumber(User user) {
-        return new Random().nextInt(10) + user.getBirthday().toEpochDay() + "";
+    static String generateCardNumber() {
+        return UUID.randomUUID().toString();
     }
 }
