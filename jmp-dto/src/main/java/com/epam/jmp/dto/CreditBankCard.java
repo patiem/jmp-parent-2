@@ -3,7 +3,14 @@ package com.epam.jmp.dto;
 import java.util.Objects;
 
 public class CreditBankCard extends BankCard {
+
+    private static final double DEFAULT_CREDIT = 1000;
+
     private double creditLimit;
+
+    public CreditBankCard(String number, User user) {
+        this(number, user, DEFAULT_CREDIT);
+    }
 
     public CreditBankCard(String number, User user, double creditLimit) {
         super(number, user);
