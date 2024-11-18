@@ -9,7 +9,6 @@ import com.epam.jmp.repo.impl.SubscriptionNotFoundException;
 import com.epam.jmp.service.Service;
 
 import java.time.LocalDate;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
