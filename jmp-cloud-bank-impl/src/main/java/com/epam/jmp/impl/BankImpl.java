@@ -1,28 +1,32 @@
 package com.epam.jmp.impl;
 
-import com.epam.jmp.dto.*;
+import com.epam.jmp.dto.BankCard;
+import com.epam.jmp.dto.BankCardType;
+import com.epam.jmp.dto.User;
 import com.epam.jmp.service.bank.Bank;
+import com.epam.jmp.service.bank.CardNumberGenerator;
 
-import java.util.EnumMap;
-import java.util.Map;
+import java.util.List;
 import java.util.Optional;
-import java.util.function.BiFunction;
 
 public class BankImpl implements Bank {
 
-    private final Map<BankCardType, BiFunction<String, User, BankCard>> cardCreators = new EnumMap<>(BankCardType.class);
+    private final CardNumberGenerator generator;
+    private final List<BankCardType> cardTypesForBank;
 
-    public BankImpl() {
-        cardCreators.put(BankCardType.CREDIT, CreditBankCard::new);
-        cardCreators.put(BankCardType.DEBIT, DebitBankCard::new);
+    public BankImpl(CardNumberGenerator generator, List<BankCardType> cardTypesForBank) {
+        this.generator = generator;
+        this.cardTypesForBank = cardTypesForBank;
     }
 
     @Override
     public BankCard createBankCard(User user, BankCardType cardType) {
         Optional.ofNullable(user).orElseThrow(() -> new IllegalArgumentException("User cannot be null"));
 
-        var biFunction = Optional.ofNullable(cardCreators.get(cardType))
-                .orElseThrow(() -> new IllegalArgumentException("Invalid car type"));
-        return biFunction.apply(Bank.generateCardNumber(), user);
+        var biFunction = Optional.ofNullable(cardType)
+                .filter(cardTypesForBank::contains)
+                .map(c -> c.function)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid card type"));
+        return biFunction.apply(generator.generateNumber(), user);
     }
 }
