@@ -6,7 +6,6 @@ import com.epam.jmp.repo.SubscriptionRepository;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.function.Predicate;
 
 public class SubscriptionRepoImpl implements SubscriptionRepository {
     private final List<Subscription> subscriptions = new ArrayList<>();
@@ -27,8 +26,4 @@ public class SubscriptionRepoImpl implements SubscriptionRepository {
         return Collections.unmodifiableList(subscriptions);
     }
 
-    @Override
-    public List<Subscription> findSubscriptionsByCondition(Predicate<Subscription> condition) {
-        return subscriptions.stream().filter(condition).toList();
-    }
 }

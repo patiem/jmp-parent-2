@@ -45,7 +45,10 @@ public class ServiceImpl implements Service {
 
     @Override
     public List<Subscription> getAllSubscriptionsByCondition(Predicate<Subscription> condition) {
-        return subscriptionRepository.findSubscriptionsByCondition(condition);
+        return subscriptionRepository.getAllSubscriptions()
+                .stream()
+                .filter(condition)
+                .toList();
     }
 
     @Override
