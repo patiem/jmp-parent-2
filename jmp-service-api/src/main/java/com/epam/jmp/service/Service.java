@@ -35,7 +35,7 @@ public interface Service {
     static boolean isPayableUser(User user) {
         var birthday = Optional.ofNullable(user)
                 .map(User::getBirthday)
-                .orElseThrow(() -> new IllegalArgumentException("user age is unknown"));
+                .orElseThrow(() -> new IllegalArgumentException("User or user age is unknown"));
         return ChronoUnit.YEARS.between(birthday, LocalDate.now()) >= MATURITY_AGE;
     }
 }

@@ -7,6 +7,7 @@ import com.epam.jmp.dto.User;
 import java.util.UUID;
 
 public interface Bank {
+
     BankCard createBankCard(User user, BankCardType cardType);
 
     static String generateCardNumber() {
