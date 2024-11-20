@@ -1,4 +1,4 @@
-package com.epam.jmp.impl;
+package com.epam.jmp.bank;
 
 import com.epam.jmp.service.bank.CardNumberGenerator;
 

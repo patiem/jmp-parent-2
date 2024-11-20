@@ -12,9 +12,8 @@ public class UserRepoImpl implements UserRepository {
     private final List<User> users = new ArrayList<>();
 
     @Override
-    public boolean addUser(User user) {
-        if (users.contains(user)) return false;
-        return users.add(user);
+    public void addUser(User user) {
+        if (users.contains(user)) users.add(user);
     }
 
     @Override

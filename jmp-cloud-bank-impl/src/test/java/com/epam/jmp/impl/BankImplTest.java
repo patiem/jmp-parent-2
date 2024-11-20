@@ -1,6 +1,7 @@
 package com.epam.jmp.impl;
 
 
+import com.epam.jmp.bank.BankImpl;
 import com.epam.jmp.dto.BankCardType;
 import com.epam.jmp.dto.CreditBankCard;
 import com.epam.jmp.dto.User;
