@@ -36,25 +36,25 @@ public class BankImplTest {
 
     @Test
     public void throwsIllegalArgumentExceptionWhenUserIsNull() {
-        Exception exception = assertThrows(IllegalArgumentException.class,
+        var exception = assertThrows(IllegalArgumentException.class,
                 () -> bank.createBankCard(null, BankCardType.CREDIT));
-        String message = "User cannot be null";
+        var message = "User cannot be null";
         assertEquals(message, exception.getMessage());
     }
 
     @Test
     public void throwsIllegalArgumentExceptionWhenCardTypeIsNull() {
-        Exception exception = assertThrows(IllegalArgumentException.class,
+        var exception = assertThrows(IllegalArgumentException.class,
                 () -> bank.createBankCard(user, null));
-        String message = "Invalid card type";
+        var message = "Invalid card type";
         assertEquals(message, exception.getMessage());
     }
 
     @Test
     public void throwsIllegalArgumentExceptionWhenCardTypeNotListedInBank() {
-        Exception exception = assertThrows(IllegalArgumentException.class,
+        var exception = assertThrows(IllegalArgumentException.class,
                 () -> bank.createBankCard(user, BankCardType.DEBIT));
-        String message = "Invalid card type";
+        var message = "Invalid card type";
         assertEquals(message, exception.getMessage());
     }
 

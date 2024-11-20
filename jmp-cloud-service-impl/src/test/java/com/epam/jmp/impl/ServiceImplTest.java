@@ -8,16 +8,28 @@ import com.epam.jmp.repo.UserRepository;
 import com.epam.jmp.repo.impl.SubscriptionNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.*;
+import org.mockito.ArgumentCaptor;
+import org.mockito.Captor;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
+
 
 import java.time.LocalDate;
 import java.util.Collections;
 import java.util.List;
 import java.util.function.Predicate;
 
-import static org.junit.jupiter.api.Assertions.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
 
 public class ServiceImplTest {
 
@@ -29,7 +41,7 @@ public class ServiceImplTest {
     @Mock
     private BankCard bankCard;
     @Captor
-    ArgumentCaptor<Subscription> subscriptionCaptor;
+    private ArgumentCaptor<Subscription> subscriptionCaptor;
 
     private ServiceImpl service;
 
@@ -93,9 +105,9 @@ public class ServiceImplTest {
                 .thenReturn(Collections.emptyList());
 
         //when-then
-        Exception exception = assertThrows(SubscriptionNotFoundException.class,
+        var exception = assertThrows(SubscriptionNotFoundException.class,
                 () -> service.getSubscriptionByBankCardNumber(CARD_NUMBER));
-        String message = "No subscription found for bank card: " + CARD_NUMBER;
+        var message = "No subscription found for bank card: " + CARD_NUMBER;
         assertEquals(message, exception.getMessage());
     }
 

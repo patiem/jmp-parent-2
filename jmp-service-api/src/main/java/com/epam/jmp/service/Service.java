@@ -26,8 +26,8 @@ public interface Service {
         return getAllUsers()
                 .stream()
                 .filter(Objects::nonNull)
-                .filter(u -> Objects.nonNull(u.getBirthday()))
-                .mapToDouble(u -> ChronoUnit.YEARS.between(u.getBirthday(), LocalDate.now()))
+                .filter(user -> Objects.nonNull(user.getBirthday()))
+                .mapToDouble(user -> ChronoUnit.YEARS.between(user.getBirthday(), LocalDate.now()))
                 .average()
                 .orElse(0d);
     }

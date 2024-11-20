@@ -25,7 +25,7 @@ public class BankImpl implements Bank {
 
         var biFunction = Optional.ofNullable(cardType)
                 .filter(cardTypesForBank::contains)
-                .map(c -> c.function)
+                .map(type -> type.function)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid card type"));
         return biFunction.apply(generator.generateNumber(), user);
     }

@@ -24,7 +24,7 @@ public class App
 
         var user1 = new User("Elton", "John", LocalDate.of(1980, 5, 14));
         var user2 = new User("Billy", "Joel", LocalDate.of(1982, 7, 16));
-        var user3 = new User("Paul", "McCartney", null);
+        var user3 = new User("Paul", "McCartney", LocalDate.of(1984, 7, 16));
 
         userRepository.addUser(user1);
         userRepository.addUser(user2);

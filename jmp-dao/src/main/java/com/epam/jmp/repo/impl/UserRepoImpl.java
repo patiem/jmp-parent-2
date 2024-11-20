@@ -13,7 +13,7 @@ public class UserRepoImpl implements UserRepository {
 
     @Override
     public void addUser(User user) {
-        if (users.contains(user)) users.add(user);
+        if (!users.contains(user)) users.add(user);
     }
 
     @Override

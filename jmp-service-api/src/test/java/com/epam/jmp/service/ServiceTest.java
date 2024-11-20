@@ -32,13 +32,13 @@ public class ServiceTest {
                 .mapToObj(this::mockUserWithAge)
                 .collect(Collectors.toList());
 
-        Service service = createServiceWithUsers(users);
+        var service = createServiceWithUsers(users);
 
         // when
-        double averageFromService = service.getAverageUsersAge();
+        var averageFromService = service.getAverageUsersAge();
 
         //then
-        double expected = IntStream.iterate(10, unOp)
+        var expected = IntStream.iterate(10, unOp)
                 .limit(10)
                 .average()
                 .orElse(0d);
@@ -55,13 +55,13 @@ public class ServiceTest {
 
         users.add(users.size()/2, null);
         users.add(null);
-        Service service = createServiceWithUsers(users);
+        var service = createServiceWithUsers(users);
 
         // when
-        double actual = service.getAverageUsersAge();
+        var actual = service.getAverageUsersAge();
 
         // then
-        double expected = IntStream.iterate(10, unOp)
+        var expected = IntStream.iterate(10, unOp)
                 .limit(10)
                 .average()
                 .orElse(0d);
@@ -79,7 +79,7 @@ public class ServiceTest {
 
         users.add(users.size()/2, Mockito.mock(User.class));
         users.add(Mockito.mock(User.class));
-        Service service = createServiceWithUsers(users);
+        var service = createServiceWithUsers(users);
 
         // when
         double actual = service.getAverageUsersAge();
@@ -98,7 +98,7 @@ public class ServiceTest {
         List<User> users = new ArrayList<>();
         users.add(Mockito.mock(User.class));
         users.add(Mockito.mock(User.class));
-        Service service = createServiceWithUsers(users);
+        var service = createServiceWithUsers(users);
 
         // when
         double actual = service.getAverageUsersAge();
@@ -109,13 +109,13 @@ public class ServiceTest {
 
     @Test
     void isPayableUserTrueForAge18() {
-        User user = mockUserWithAge(18);
+        var user = mockUserWithAge(18);
         assertTrue(Service.isPayableUser(user));
     }
 
     @Test
     void isPayableUserTrueForAgeOver18() {
-        User user = mockUserWithAge(35);
+        var user = mockUserWithAge(35);
         assertTrue(Service.isPayableUser(user));
     }
 
@@ -126,24 +126,24 @@ public class ServiceTest {
 
     @Test
     void shouldThrowIllegalArgumentExceptionForIsPayableWhenUserIsNull() {
-        Exception exception = assertThrows(IllegalArgumentException.class,
+        var exception = assertThrows(IllegalArgumentException.class,
                 () -> Service.isPayableUser(null));
-        String message = "User or user age is unknown";
+        var message = "User or user age is unknown";
         assertEquals(message, exception.getMessage());
     }
 
     @Test
     void shouldThrowIllegalArgumentExceptionForIsPayableWhenUsersBirthdayIsNull() {
-        Exception exception = assertThrows(IllegalArgumentException.class,
+        var exception = assertThrows(IllegalArgumentException.class,
                 () -> Service.isPayableUser(Mockito.mock(User.class)));
-        String message = "User or user age is unknown";
+        var message = "User or user age is unknown";
         assertEquals(message, exception.getMessage());
     }
 
 
     private User mockUserWithAge(int age) {
-        User mockUser = Mockito.mock(User.class);
-        LocalDate birthday = TODAY.minusYears(age);
+        var mockUser = Mockito.mock(User.class);
+        var birthday = TODAY.minusYears(age);
         when(mockUser.getBirthday()).thenReturn(birthday);
         return mockUser;
     }
