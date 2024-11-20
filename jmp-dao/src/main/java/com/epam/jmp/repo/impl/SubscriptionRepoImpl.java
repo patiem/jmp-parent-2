@@ -16,12 +16,6 @@ public class SubscriptionRepoImpl implements SubscriptionRepository {
     }
 
     @Override
-    public void addSubscriptions(List<Subscription> subscriptionsToAdd) {
-        var newSubscriptions = subscriptionsToAdd.stream().filter(u -> !subscriptions.contains(u)).toList();
-        subscriptions.addAll(newSubscriptions);
-    }
-
-    @Override
     public List<Subscription> getAllSubscriptions() {
         return Collections.unmodifiableList(subscriptions);
     }

@@ -18,13 +18,6 @@ public class UserRepoImpl implements UserRepository {
     }
 
     @Override
-    public boolean addUsers(List<User> usersToAdd) {
-        var newUsers = usersToAdd.stream().filter(u -> !users.contains(u)).toList();
-        users.addAll(newUsers);
-        return newUsers.size() == usersToAdd.size();
-    }
-
-    @Override
     public List<User> getAllUsers() {
         return Collections.unmodifiableList(users);
     }

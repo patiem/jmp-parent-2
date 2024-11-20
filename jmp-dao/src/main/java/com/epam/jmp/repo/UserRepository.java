@@ -7,6 +7,5 @@ import java.util.List;
 public interface UserRepository {
 
     boolean addUser(User user);
-    boolean addUsers(List<User> users);
     List<User> getAllUsers();
 }
