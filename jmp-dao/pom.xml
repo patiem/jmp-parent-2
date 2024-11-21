@@ -7,16 +7,24 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>jmp-dto</artifactId>
+    <artifactId>jmp-dao</artifactId>
     <packaging>jar</packaging>
 
-    <name>jmp-dto</name>
+    <name>jmp-dao</name>
     <url>http://maven.apache.org</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.epam.jmp</groupId>
+            <artifactId>jmp-dto</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
     <build>
         <plugins>
             <plugin>

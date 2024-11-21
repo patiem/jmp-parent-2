@@ -16,15 +16,39 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-
     <dependencies>
         <dependency>
             <groupId>com.epam.jmp</groupId>
-            <artifactId>jmp-dto</artifactId>
+            <artifactId>jmp-bank-api</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.epam.jmp</groupId>
+            <artifactId>jmp-service-api</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.epam.jmp</groupId>
+            <artifactId>jmp-dao</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.epam.jmp</groupId>
+            <artifactId>jmp-cloud-service-impl</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.epam.jmp</groupId>
+            <artifactId>jmp-cloud-bank-impl</artifactId>
             <version>1.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>
+
     <build>
         <plugins>
             <plugin>
